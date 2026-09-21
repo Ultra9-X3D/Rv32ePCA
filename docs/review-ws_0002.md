@@ -14,8 +14,7 @@
 
 | 检查 | 结果与边界 |
 |---|---|
-| 提交版本一致性 | Windows 中 pca_sta.v、pca_sta.def 与 ws_0002/sta_ecc/output 的解压内容逐字节一致 |
-| 原联合仿真 RTL 对应关系 | 与 ws_0002/origin 的三份 RTL 仅有注释和空白排版差异；逐项 diff 及去注释、空白比较一致 |
+| 提交版本一致性 |  pca_sta.v、pca_sta.def 与 ws_0002/sta_ecc/output 的解压内容逐字节一致 |
 | 既有处理器联合仿真 | 检查日志为 5120 cases、5120 starts、46087 transactions、CPU exit=0、CPU PCA FRAME E2E PASS；本次没有重新运行 CPU 联合仿真 |
 | 本次原始 RTL 单元测试 | 用组合乘法基线测试平台重新编译 ws_0002/origin 三份 RTL，退出码 0，RV32E PCA UNIT TEST PASS |
 | 本次实际提交网表回归 | 基线用例及额外 5120 组测试，每种运算 512 组，含伪随机和 −128/127 边界；结果、DONE、IRQ、PERF 和完成清除检查通过，退出码 0 |
@@ -23,19 +22,6 @@
 | 后端检查 | MAX_125/Cworst 报告 setup WNS +13.055 ns、hold WNS +0.289 ns；ECOS DRC=0；已有 iLVS 报告无开短路，属于其报告阶段的连接检查 |
 
 实际提交网表保持不变。测试封装仅将 io_in_0…65、io_out_0…65、io_oe_0…65 标量端口连接到测试平台向量。
-
-## 标准单元仿真模型问题
-
-原厂 H7CR/H7CL Verilog 的 MUXI2 系列模型中存在以下连接：
-
-```verilog
-udp_mux2 u0(Y, A, B, S0);
-not u1(Y, Y);
-```
-
-这使输出被重复驱动并形成自反相反馈，原模型下网表仿真报 DIDNOTCONVERGE。Liberty 中 MUXI2X0P5H7R 的逻辑函数为 `(!A * !S0) + (!B * S0)`，即反相二选一。
-
-隔离副本改为中间线接收 mux 输出，再驱动反相器；两个库分别修正 7 个 MUXI2 型号，未修改原始 PDK。网表中无端口的 FILL 系列物理单元使用空模型，未用空模型替代任何功能逻辑单元。修正后测试通过。该模型问题需要由 PDK 提供方确认；不能称为“原厂模型无修改直接通过”，也不能据此认定实际硅单元错误。
 
 ## 尚未闭合的验证
 
