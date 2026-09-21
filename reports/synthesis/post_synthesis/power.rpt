@@ -1,0 +1,28 @@
+Design : Rv32ePca
+Operating Conditions: ICS_N55_H7BR_ss_mos_RCworst_1.08_125
+Analysis Effort : low
+Wire Load Model : ZeroWireload
+Global Operating Voltage = 1.08
+
+Dynamic Power Units = 1mW
+Leakage Power Units = 1nW
+
+Cell Internal Power  =  115.1279 uW
+Net Switching Power  =    2.3846 uW
+Total Dynamic Power  =  117.5126 uW
+Cell Leakage Power   =   13.6504 uW
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)  i
+register           0.1127        5.9186e-04         1531.1292            0.1149  (  87.57%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational  2.3964e-03        1.7928e-03        12119.2775        1.6308e-02  (  12.43%)
+--------------------------------------------------------------------------------------------------
+Total              0.1151 mW     2.3846e-03 mW     13650.4067 nW         0.1312 mW
+
+i - Including register clock pin internal power

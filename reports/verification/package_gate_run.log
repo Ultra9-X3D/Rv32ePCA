@@ -1,0 +1,5 @@
+WS2 GATE FUNCTIONAL PASS: baseline plus 5120 reference cases; simulation-only MUXI model patch; no SDF
+- /mnt/c/Users/beyon/Documents/ChatGPT/嵌赛/Rv32ePCA/tests/GateRegressionTb.v:292: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.046 2026-02-28
+- Verilator: $finish at 1ms; walltime 0.978 s; speed 1.298 ms/s
+- Verilator: cpu 1.067 s on 1 threads; allocated 7 MB

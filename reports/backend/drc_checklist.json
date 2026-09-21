@@ -1,0 +1,38 @@
+{
+    "schema_version": 3,
+    "kind": "signoff_checklist",
+    "checker_revision": "signoff-v1",
+    "generated_at": "2026-09-13T13:49:33.325677Z",
+    "status": "ready",
+    "summary": {
+        "passed": 1,
+        "blocked": 0,
+        "attention": 0,
+        "unavailable": 0
+    },
+    "checklist": [
+        {
+            "id": "quality.drc.clean",
+            "step": "drc",
+            "category": "quality_gate",
+            "owner": "qor",
+            "policy": "block",
+            "state": "pass",
+            "blocked": false,
+            "title": "Final DRC clean",
+            "summary": "drc_count=0 (required == 0)",
+            "source": {
+                "kind": "qor_gate",
+                "path": "drc_ecc/analysis/qor_summary.json",
+                "gate_id": "qor.drc.clean"
+            },
+            "evidence": [
+                {
+                    "kind": "feature",
+                    "path": "drc_ecc/feature/drc.step.json",
+                    "selector": "/drc/number"
+                }
+            ]
+        }
+    ]
+}

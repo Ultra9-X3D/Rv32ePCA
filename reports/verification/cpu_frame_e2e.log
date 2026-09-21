@@ -1,0 +1,3 @@
+PCA starts=5120 transactions=46087
+CPU exit=0 cases=5120 cycles=57333145 pc=8000000c
+CPU PCA FRAME E2E PASS

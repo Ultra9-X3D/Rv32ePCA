@@ -1,0 +1,4 @@
+* text=auto eol=lf
+/rtl/*.v -text
+/constraints/pca.sdc -text
+/submission/* -text

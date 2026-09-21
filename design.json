@@ -1,0 +1,32 @@
+{
+  "name": "rv32e-pca-5000inst",
+  "module": "Rv32ePca",
+  "sources": [
+    "rtl/PcaDatapath.v",
+    "rtl/Apb4Rv32ePca.v",
+    "rtl/Rv32ePca.v"
+  ],
+  "include_dirs": [],
+  "defines": {},
+  "parameters": {
+    "IO_WIDTH": 66
+  },
+  "tests": [
+    {
+      "name": "io",
+      "kind": "unit",
+      "top": "Rv32ePcaTb",
+      "sources": [
+        "tests/Rv32ePcaTb.v"
+      ]
+    },
+    {
+      "name": "frame",
+      "kind": "frame",
+      "top": "FrameRv32ePcaTb",
+      "sources": [
+        "tests/FrameRv32ePcaTb.v"
+      ]
+    }
+  ]
+}
