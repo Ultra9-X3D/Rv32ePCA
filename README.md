@@ -8,7 +8,7 @@ MPC Frame 四路 INT8 并行计算加速器，保存最终选定的 **ECOS Studi
 
 | 目录或文件 | 内容 |
 |---|---|
-| [设计报告](docs/design-report-ws_0002.md) | 面向组委审核的功能、指标、面积、利用率与回片测试计划 |
+| [设计报告](docs/design-report-ws_0002.md) | 面向审核的功能、指标、面积、利用率与回片测试计划 |
 | [审核记录](docs/review-ws_0002.md) | 验证结果、模型修正前提及尚未闭合的验证 |
 | [架构](docs/architecture.md)、[寄存器与引脚](docs/registers-and-pins.md) | 运算、时序、调用方式 |
 | `rtl/` | `ws_0002/origin` 的三份原始 RTL，逐字节保留 |
@@ -49,7 +49,7 @@ python3 scripts/run_tests.py
 python3 scripts/run_tests.py --gate --cell-root /path/to/ics55_LLSC_H7C_V1p10C100
 ```
 
-脚本只在 `build/` 中修正库模型副本的 MUXI2 输出自反相错误，并保留修改记录；不改原 PDK 或提交网表。回归包含基线用例及额外 5120 组独立参考计算，未加载 SDF。详见[审核记录](docs/review-ws_0002.md)。PDK、完整模型库和 CPU 工程不随本仓库分发。
+PDK、完整模型库和 CPU 工程不随本仓库分发。
 
 Frame 集成测试需外部 MPC Frame 工程。将本仓库内容放入其 `designs/rv32e-pca-5000inst/` 后，在框架根目录运行：
 
@@ -61,8 +61,6 @@ Framework 负责生成 `UserDesignDut`、注册表及分配测试编号。最终
 
 ## 版本与验证范围
 
-RTL 和提交文件来自 `ws_0002`，不含移位加法实验版本。测试与接口文档基于原项目组合乘法基线提交 `97596061582e439362378af5427ca0be744f2a5b` 整理，哈希清单记录本仓库实际文件。
-
 已有 RTL/Frame 功能测试、5120 用例的处理器联合仿真，以及注明模型修正前提的零延时提交网表回归证据。处理器联合仿真日志归档于 `reports/verification/`，完整 CPU/桥接环境未随仓库发布。
 
-尚未完成 RTL/网表形式等价、带 SDF 延时验证和硅上测试。原始 SDC 未定义外部输入输出延时，最终 Frame 接口时序仍需复核。ECOS DRC/iLVS 检查不代替组织方最终工艺签核。库仿真模型缺陷不等于已发现设计 RTL、网表或实际硅单元错误。
+尚未完成 RTL/网表形式等价、带 SDF 延时验证和硅上测试。原始 SDC 未定义外部输入输出延时，最终 Frame 接口时序仍需复核。ECOS DRC/iLVS 检查不代替组织方最终工艺签核。
